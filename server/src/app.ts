@@ -8,6 +8,7 @@ import {startStandaloneServer} from '@apollo/server/standalone'
 import { schema } from './graphql/schema/schema.js'
 import { connectDB } from './DB/connectDB.js'
 import { getAlUsers } from './controllers/user.controller.js'
+import { getAllCourses, getCourseById } from './controllers/course.controller.js'
 
 dotenv.config({path: './.env',});
 
@@ -25,7 +26,8 @@ typeDefs: schema,
 resolvers: {
   Query: {
     users: getAlUsers,
-    courses: ()=> {},
+    courses: getAllCourses,
+    course: getCourseById
   }
 },
 })

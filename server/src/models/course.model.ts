@@ -14,7 +14,7 @@ const courseSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    ratingsAverate: {
+    ratingsAverage: {
         type: Number,
         required: true
     },
@@ -34,7 +34,7 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    lavel: {
+    lebel: {
         type: String,
         required: true
     },
@@ -82,7 +82,7 @@ const courseSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    converImage: {
+    coverImage: {
         type: String,
         required: true
     },

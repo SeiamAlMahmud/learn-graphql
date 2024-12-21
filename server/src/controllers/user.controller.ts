@@ -1,8 +1,13 @@
 import User from '../models/user.model.js'
 
 const getAlUsers = async () => {
-    const users = await User.find();
-    return users;
+    try {
+        
+        const users = await User.find();
+        return users;
+    } catch (error) {
+        
+    }
 }
 
 export { getAlUsers };

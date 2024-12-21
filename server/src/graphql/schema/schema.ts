@@ -45,6 +45,7 @@ type Course {
 type Query {
     users: [User]
     courses: [Course]
+    course(id: ID!): Course
     # sections: [Section]
     # lectures: [Lecture]
 }
