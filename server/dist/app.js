@@ -1,8 +1,40 @@
 import dotenv from 'dotenv';
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import { schema } from './graphql/schema/schema.js';
+import { connectDB } from './DB/connectDB.js';
+import { getAlUsers, getuserById } from './controllers/user.controller.js';
+import { getAllCourses, getCourseById } from './controllers/course.controller.js';
 dotenv.config({ path: './.env', });
+// Connect to MongoDB
+connectDB();
 export const envMode = process.env.NODE_ENV?.trim() || 'DEVELOPMENT';
-const port = process.env.PORT || 3000;
+const port = Number(process.env.PORT) || 5000;
 // const app = express();
+const server = new ApolloServer({
+    typeDefs: schema,
+    resolvers: {
+        Query: {
+            users: getAlUsers,
+            courses: getAllCourses,
+            course: getCourseById
+        },
+        Course: {
+            instructor: async (courseParent) => {
+                return await getuserById(courseParent.instructor);
+            }
+        }
+    },
+});
+startStandaloneServer(server, {
+    listen: {
+        port,
+    }
+}).then(() => {
+    console.log(`Server is working on Port: ${port} in ${envMode} Mode.`);
+}).catch((err) => {
+    console.log(err);
+});
 //  app.use(express.json());
 // app.use(express.urlencoded({extended: true}));
 // app.use(cors({origin:' * ',credentials:true}));

@@ -1,4 +1,5 @@
 import Course from "../models/course.model.js"
+import Lecture from "../models/lecture.model.js";
 
 const getAllCourses = async () => {
     try {
@@ -19,4 +20,13 @@ const getCourseById = async (_: any, { id }: { id: string }) => {
     }
 }
 
-export { getAllCourses, getCourseById }
+const getAllLectures = async () => {
+    try {
+        const lectures = await Lecture.find();
+        return lectures || [];
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export { getAllCourses, getCourseById, getAllLectures }
