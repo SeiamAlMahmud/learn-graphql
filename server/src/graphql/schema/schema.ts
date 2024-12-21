@@ -18,12 +18,12 @@ type Course {
     title: String!
     description: String!
     instructor: User!
-    ratingsAverate: Int!
+    ratingsAverage: Int!
     ratingsQuantity: Int!
     price: Int!
     category: String!
     subCategory: String!
-    lavel: String!
+    level: String!
     language: String!
     whatYouWillEarn: [String!]!
     requirements: [String!]!
@@ -35,7 +35,7 @@ type Course {
     isFeatured: Boolean!
     isTrending: Boolean!
     isBestSeller: Boolean!
-    converImage: String!
+    coverImage: String!
     previewVideo: String!
     students: [String!]!
     createdAt: String!
