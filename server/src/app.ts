@@ -7,7 +7,8 @@ import {ApolloServer} from '@apollo/server'
 import {startStandaloneServer} from '@apollo/server/standalone'
 import { schema } from './graphql/schema/schema.js'
 import { connectDB } from './DB/connectDB.js'
-import User from './models/user.model.js'
+import { getAlUsers } from './controllers/user.controller.js'
+
 dotenv.config({path: './.env',});
 
 
@@ -24,10 +25,7 @@ typeDefs: schema,
 resolvers: {
   Query: {
     hello: () => 'Hello, World!',
-    users: async () =>{
-    const users =  await User.find();
-    return users;
-    },
+    users: getAlUsers,
   }
 },
 })
