@@ -10,4 +10,15 @@ const getAlUsers = async () => {
     }
 }
 
-export { getAlUsers };
+
+const getuserById = async (id: string) => {
+    try {
+        
+        const user = await User.findById(id);
+        return user;
+    } catch (error) {
+        
+    }
+}
+
+export { getAlUsers, getuserById };

@@ -7,7 +7,7 @@ import {ApolloServer} from '@apollo/server'
 import {startStandaloneServer} from '@apollo/server/standalone'
 import { schema } from './graphql/schema/schema.js'
 import { connectDB } from './DB/connectDB.js'
-import { getAlUsers } from './controllers/user.controller.js'
+import { getAlUsers, getuserById } from './controllers/user.controller.js'
 import { getAllCourses, getCourseById } from './controllers/course.controller.js'
 
 dotenv.config({path: './.env',});
@@ -28,6 +28,11 @@ resolvers: {
     users: getAlUsers,
     courses: getAllCourses,
     course: getCourseById
+  },
+  Course: {
+    instructor:async (courseParent)=> {
+    return  await getuserById(courseParent.instructor)
+    }
   }
 },
 })
