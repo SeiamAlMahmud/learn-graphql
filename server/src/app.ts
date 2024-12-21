@@ -24,8 +24,8 @@ const server = new ApolloServer({
 typeDefs: schema,
 resolvers: {
   Query: {
-    hello: () => 'Hello, World!',
     users: getAlUsers,
+    courses: ()=> {},
   }
 },
 })

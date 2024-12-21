@@ -35,14 +35,14 @@ const userSchema = new mongoose.Schema({
         enum: ['male', 'female'],
         required: true
     },
-    // watching: {
-    //     typr: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Course'
-    // },
-    // saved: {
-    //     typr: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Course'
-    // },
+    watching: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course'
+    },
+    saved: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course'
+    },
     verificationToken: {type: String},
     verificationExpire: {type: Date},
 
